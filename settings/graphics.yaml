@@ -1,0 +1,33 @@
+# Graphics MCP Server Configuration
+
+server_name: "graphics-mcp"
+server_description: "Unified MCP server for graphics manipulation"
+
+# Backend Configuration
+default_backend: "pillow"
+enable_pillow: true
+enable_imagemagick: false
+enable_gimp: false
+
+# Security Configuration
+allowed_directories:
+  - "/tmp"
+  - "~/Pictures"
+  - "~/Downloads"
+max_file_size_mb: 100
+allowed_formats:
+  - "JPEG"
+  - "PNG"
+  - "GIF"
+  - "BMP"
+  - "WEBP"
+  - "TIFF"
+
+# HTTP Transport
+enable_http_transport: true
+http_host: "127.0.0.1"
+http_port: 3040
+
+# Logging
+log_level: "INFO"
+log_json: true
