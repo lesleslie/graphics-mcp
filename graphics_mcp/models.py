@@ -2,14 +2,13 @@
 
 from __future__ import annotations
 
-from enum import Enum
-from pathlib import Path
+from enum import StrEnum
 from typing import Annotated, Any
 
 from pydantic import BaseModel, Field, field_validator
 
 
-class ImageFormat(str, Enum):
+class ImageFormat(StrEnum):
     """Supported image formats."""
 
     JPEG = "JPEG"
@@ -21,7 +20,7 @@ class ImageFormat(str, Enum):
     ICO = "ICO"
 
 
-class ResizeMode(str, Enum):
+class ResizeMode(StrEnum):
     """Resize mode options."""
 
     FIT = "fit"  # Fit within dimensions, maintain aspect ratio
@@ -30,7 +29,7 @@ class ResizeMode(str, Enum):
     CROP = "crop"  # Crop to exact dimensions
 
 
-class FilterType(str, Enum):
+class FilterType(StrEnum):
     """Available image filters."""
 
     BLUR = "blur"

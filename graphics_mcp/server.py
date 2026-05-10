@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from contextlib import asynccontextmanager
 from typing import TYPE_CHECKING, Any
 
 from fastmcp import FastMCP
@@ -13,7 +12,7 @@ from graphics_mcp.config import get_logger_instance, get_settings, setup_logging
 from graphics_mcp.tools import register_raster_tools, register_universal_tools
 
 if TYPE_CHECKING:
-    from collections.abc import AsyncGenerator
+    pass
 
 logger = get_logger_instance("graphics-mcp.server")
 
@@ -34,6 +33,23 @@ def create_app() -> FastMCP:
 
     app = FastMCP(name=APP_NAME, version=APP_VERSION)
 
+    # HTTP health endpoint for Claude Code compatibility
+    @app.custom_route("/health", methods=["GET"])
+    async def health_check(request: Any) -> Any:
+        """HTTP health check endpoint for Claude Code `mcp list` compatibility."""
+        from starlette.responses import JSONResponse
+
+        return JSONResponse(
+            {"status": "ok", "service": "graphics", "version": APP_VERSION}
+        )
+
+    @app.custom_route("/healthz", methods=["GET"])
+    async def healthz_check(request: Any) -> Any:
+        """Kubernetes-style health check endpoint."""
+        from starlette.responses import JSONResponse
+
+        return JSONResponse({"status": "ok"})
+
     # Initialize backend
     backend = PillowBackend()
 
@@ -44,8 +60,21 @@ def create_app() -> FastMCP:
     # Log registered tools
     logger.info(
         "Tools registered",
-        universal=["get_image_info", "convert_image", "list_allowed_directories", "list_supported_formats"],
-        raster=["resize_image", "crop_image", "apply_filter", "rotate_image", "flip_image", "create_thumbnail", "list_available_filters"],
+        universal=[
+            "get_image_info",
+            "convert_image",
+            "list_allowed_directories",
+            "list_supported_formats",
+        ],
+        raster=[
+            "resize_image",
+            "crop_image",
+            "apply_filter",
+            "rotate_image",
+            "flip_image",
+            "create_thumbnail",
+            "list_available_filters",
+        ],
     )
 
     return app

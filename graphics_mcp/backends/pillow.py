@@ -7,9 +7,7 @@ from typing import TYPE_CHECKING, Any
 
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 from pilkit.processors import (
-    Adjust,
     Crop,
-    MakeOpaque,
     Resize,
     ResizeToCover,
     ResizeToFill,
@@ -129,20 +127,30 @@ class PillowBackend(BaseGraphicsBackend):
             if options.mode.value == "fit":
                 # Fit within dimensions maintaining aspect ratio
                 if options.width and options.height:
-                    processor = Resize(options.width, options.height, upscale=options.upscale)
+                    processor = Resize(
+                        options.width, options.height, upscale=options.upscale
+                    )
                 elif options.width:
                     processor = Resize(options.width, upscale=options.upscale)
                 else:
                     processor = Resize(height=options.height, upscale=options.upscale)
             elif options.mode.value == "fill":
                 # Fill dimensions, may crop
-                processor = ResizeToFill(options.width or img.width, options.height or img.height)
+                processor = ResizeToFill(
+                    options.width or img.width, options.height or img.height
+                )
             elif options.mode.value == "crop":
                 # Crop to exact dimensions
-                processor = ResizeToCover(options.width or img.width, options.height or img.height)
+                processor = ResizeToCover(
+                    options.width or img.width, options.height or img.height
+                )
             else:
                 # Exact resize (may distort)
-                processor = Resize(options.width or img.width, options.height or img.height, upscale=options.upscale)
+                processor = Resize(
+                    options.width or img.width,
+                    options.height or img.height,
+                    upscale=options.upscale,
+                )
 
             processed = processor.process(img)
 
@@ -250,11 +258,17 @@ class PillowBackend(BaseGraphicsBackend):
             elif filter_type == "sharpen":
                 img = img.filter(ImageFilter.UnsharpMask(radius=intensity))
             elif filter_type == "edge_enhance":
-                img = img.filter(ImageFilter.EDGE_ENHANCE_MORE if intensity > 1 else ImageFilter.EDGE_ENHANCE)
+                img = img.filter(
+                    ImageFilter.EDGE_ENHANCE_MORE
+                    if intensity > 1
+                    else ImageFilter.EDGE_ENHANCE
+                )
             elif filter_type == "emboss":
                 img = img.filter(ImageFilter.EMBOSS)
             elif filter_type == "smooth":
-                img = img.filter(ImageFilter.SMOOTH_MORE if intensity > 1 else ImageFilter.SMOOTH)
+                img = img.filter(
+                    ImageFilter.SMOOTH_MORE if intensity > 1 else ImageFilter.SMOOTH
+                )
             elif filter_type == "grayscale":
                 img = ImageOps.grayscale(img)
                 if img.mode == "L":
@@ -365,7 +379,9 @@ class PillowBackend(BaseGraphicsBackend):
             new_size = (rotated.width, rotated.height)
 
             if not output_path:
-                output_path = self._generate_output_path(image_path, f"rotated_{int(degrees)}")
+                output_path = self._generate_output_path(
+                    image_path, f"rotated_{int(degrees)}"
+                )
 
             final_path = self._save_image(rotated, output_path)
 
@@ -401,13 +417,12 @@ class PillowBackend(BaseGraphicsBackend):
             img = self._open_image(image_path)
             original_size = (img.width, img.height)
 
-            if horizontal:
-                flipped = ImageOps.mirror(img)
-            else:
-                flipped = ImageOps.flip(img)
+            flipped = ImageOps.mirror(img) if horizontal else ImageOps.flip(img)
 
             if not output_path:
-                output_path = self._generate_output_path(image_path, f"flipped_{direction}")
+                output_path = self._generate_output_path(
+                    image_path, f"flipped_{direction}"
+                )
 
             final_path = self._save_image(flipped, output_path)
 

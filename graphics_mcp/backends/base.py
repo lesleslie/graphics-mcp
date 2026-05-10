@@ -14,7 +14,7 @@ if TYPE_CHECKING:
         ImageInfo,
         ResizeOptions,
         TransformResult,
-)
+    )
 
 
 class GraphicsBackend(Protocol):
@@ -111,7 +111,7 @@ class BaseGraphicsBackend(ABC):
         """Validate that path is within allowed directories."""
         from graphics_mcp.config import get_settings
 
-        settings = get_settings()
+        get_settings()
         expanded = Path(path).expanduser().resolve()
 
         # Check allowed directories
@@ -140,10 +140,7 @@ class BaseGraphicsBackend(ABC):
         if suffix:
             stem = f"{stem}_{suffix}"
 
-        if new_format:
-            ext = f".{new_format.lower()}"
-        else:
-            ext = source.suffix
+        ext = f".{new_format.lower()}" if new_format else source.suffix
 
         return str(source.parent / f"{stem}{ext}")
 

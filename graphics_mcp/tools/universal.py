@@ -9,7 +9,6 @@ from graphics_mcp.config import get_logger_instance, get_settings
 from graphics_mcp.models import (
     ConvertOptions,
     ImageFormat,
-    ImageInfo,
     ToolResponse,
 )
 

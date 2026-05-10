@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with this repository.
 
+For a shorter, tool-neutral bootstrap document, start with `AGENTS.md`.
+
 ## Project Overview
 
 **graphics-mcp** is a unified MCP server for graphics manipulation with multiple backends, providing image processing capabilities via the Model Context Protocol.
