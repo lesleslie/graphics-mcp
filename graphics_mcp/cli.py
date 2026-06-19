@@ -15,8 +15,6 @@ import uvicorn  # noqa: E402
 from mcp_common import MCPServerCLIFactory, MCPServerSettings  # noqa: E402
 from mcp_common.cli.health import RuntimeHealthSnapshot  # noqa: E402
 
-from graphics_mcp import __version__  # noqa: E402
-
 
 class GraphicsSettings(MCPServerSettings):
     """Graphics MCP server settings extending MCPServerSettings."""
@@ -45,11 +43,10 @@ def health_probe_handler() -> RuntimeHealthSnapshot:
     from graphics_mcp.config import get_settings
 
     settings = get_settings()
-    return RuntimeHealthSnapshot( # type: ignore
-        server_name="graphics-mcp",
-        status="healthy",
-        version=__version__,
-        extra={
+    return RuntimeHealthSnapshot(
+        orchestrator_pid=os.getpid(),
+        watchers_running=True,
+        lifecycle_state={
             "default_backend": settings.default_backend,
             "pillow_enabled": settings.enable_pillow,
         },

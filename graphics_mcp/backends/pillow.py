@@ -278,11 +278,9 @@ class PillowBackend(BaseGraphicsBackend):
             elif filter_type == "invert":
                 img = ImageOps.invert(img.convert("RGB"))
             elif filter_type == "contrast":
-                enhancer = ImageEnhance.Contrast(img)
-                img = enhancer.enhance(intensity)
+                img = ImageEnhance.Contrast(img).enhance(intensity)
             elif filter_type == "brightness":
-                enhancer = ImageEnhance.Brightness(img) # type: ignore
-                img = enhancer.enhance(intensity)
+                img = ImageEnhance.Brightness(img).enhance(intensity)
             else:
                 raise ValueError(f"Unknown filter: {filter_type}")
 

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any
+from fastmcp import FastMCP
 
 from graphics_mcp.backends.pillow import PillowBackend
 from graphics_mcp.config import get_logger_instance, get_settings
@@ -15,10 +15,10 @@ from graphics_mcp.models import (
 logger = get_logger_instance("graphics-mcp.tools.universal")
 
 
-def register_universal_tools(app: Any, backend: PillowBackend) -> None:
+def register_universal_tools(app: FastMCP, backend: PillowBackend) -> None:
     """Register universal graphics tools with the MCP server."""
 
-    @app.tool()  # type: ignore[misc]
+    @app.tool()
     async def get_image_info(image_path: str) -> ToolResponse:
         """Get detailed information about an image file.
 

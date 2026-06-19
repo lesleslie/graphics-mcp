@@ -21,7 +21,7 @@ logger = get_logger_instance("graphics-mcp.tools.raster")
 def register_raster_tools(app: FastMCP, backend: PillowBackend) -> None:
     """Register raster graphics tools with the MCP server."""
 
-    @app.tool()  # type: ignore[misc]
+    @app.tool()
     async def resize_image(
         image_path: str,
         width: int | None = None,
