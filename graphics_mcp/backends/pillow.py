@@ -281,7 +281,7 @@ class PillowBackend(BaseGraphicsBackend):
                 enhancer = ImageEnhance.Contrast(img)
                 img = enhancer.enhance(intensity)
             elif filter_type == "brightness":
-                enhancer = ImageEnhance.Brightness(img)
+                enhancer = ImageEnhance.Brightness(img) # type: ignore
                 img = enhancer.enhance(intensity)
             else:
                 raise ValueError(f"Unknown filter: {filter_type}")

@@ -26,10 +26,6 @@ dependencies = [
     "pilkit>=3.0",
     "pydantic>=2.10.0",
     "pydantic-settings>=2.0.0",
-    "httpx>=0.28.0",
-    "rich>=13.0.0",
-    "typer>=0.15.0",
-    "structlog>=25.0.0",
     "uvicorn>=0.30.0",
 ]
 
@@ -62,12 +58,6 @@ line-length = 88
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W", "UP", "B", "C4", "SIM"]
 ignore = ["E501"]
-
-[tool.mypy]
-python_version = "3.13"
-strict = true
-warn_return_any = true
-warn_unused_ignores = true
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

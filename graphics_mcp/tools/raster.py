@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any
+from fastmcp import FastMCP
 
 from graphics_mcp.backends.pillow import PillowBackend
 from graphics_mcp.config import get_logger_instance
@@ -18,10 +18,10 @@ from graphics_mcp.models import (
 logger = get_logger_instance("graphics-mcp.tools.raster")
 
 
-def register_raster_tools(app: Any, backend: PillowBackend) -> None:
+def register_raster_tools(app: FastMCP, backend: PillowBackend) -> None:
     """Register raster graphics tools with the MCP server."""
 
-    @app.tool()
+    @app.tool()  # type: ignore[misc]
     async def resize_image(
         image_path: str,
         width: int | None = None,

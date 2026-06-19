@@ -18,7 +18,7 @@ logger = get_logger_instance("graphics-mcp.tools.universal")
 def register_universal_tools(app: Any, backend: PillowBackend) -> None:
     """Register universal graphics tools with the MCP server."""
 
-    @app.tool()
+    @app.tool()  # type: ignore[misc]
     async def get_image_info(image_path: str) -> ToolResponse:
         """Get detailed information about an image file.
 

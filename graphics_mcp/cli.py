@@ -45,7 +45,7 @@ def health_probe_handler() -> RuntimeHealthSnapshot:
     from graphics_mcp.config import get_settings
 
     settings = get_settings()
-    return RuntimeHealthSnapshot(
+    return RuntimeHealthSnapshot( # type: ignore
         server_name="graphics-mcp",
         status="healthy",
         version=__version__,
