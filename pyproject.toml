@@ -19,8 +19,8 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "fastmcp>=2.12.3",
-    "mcp-common>=0.4.8",
+    "fastmcp>=3.4.0,<4",
+    "mcp-common>=0.17.0",
     "oneiric>=0.3.6",
     "pillow>=11.0.0",
     "pilkit>=3.0",

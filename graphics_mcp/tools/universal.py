@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from fastmcp import FastMCP
+from mcp_common.fastmcp import FastMCP
 
 from graphics_mcp.backends.pillow import PillowBackend
 from graphics_mcp.config import get_logger_instance, get_settings

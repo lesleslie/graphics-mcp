@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
 
-from fastmcp import FastMCP
+from mcp_common.fastmcp import FastMCP
 
 from graphics_mcp import __version__
 from graphics_mcp.backends.pillow import PillowBackend
