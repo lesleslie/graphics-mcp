@@ -131,9 +131,13 @@ class PillowBackend(BaseGraphicsBackend):
                         options.width, options.height, upscale=options.upscale
                     )
                 elif options.width:
-                    processor = Resize(options.width, upscale=options.upscale)
+                    processor = Resize(
+                        options.width, img.height, upscale=options.upscale
+                    )
                 else:
-                    processor = Resize(height=options.height, upscale=options.upscale)
+                    processor = Resize(
+                        img.width, options.height, upscale=options.upscale
+                    )
             elif options.mode.value == "fill":
                 # Fill dimensions, may crop
                 processor = ResizeToFill(
@@ -274,7 +278,25 @@ class PillowBackend(BaseGraphicsBackend):
                 if img.mode == "L":
                     img = img.convert("RGB")
             elif filter_type == "sepia":
-                img = ImageOps.sepia(img)
+                # ImageOps has no sepia() in stock Pillow; apply the standard
+                # sepia matrix transform to RGB channels.
+                if img.mode != "RGB":
+                    img = img.convert("RGB")
+                sepia_matrix = (
+                    0.393,
+                    0.769,
+                    0.189,
+                    0,
+                    0.349,
+                    0.686,
+                    0.168,
+                    0,
+                    0.272,
+                    0.534,
+                    0.131,
+                    0,
+                )
+                img = img.convert("RGB", matrix=sepia_matrix)
             elif filter_type == "invert":
                 img = ImageOps.invert(img.convert("RGB"))
             elif filter_type == "contrast":
