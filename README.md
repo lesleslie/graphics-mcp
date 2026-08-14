@@ -2,13 +2,13 @@
 
 [![Code style: crackerjack](https://img.shields.io/badge/code%20style-crackerjack-000042)](https://github.com/lesleslie/crackerjack)
 [![Runtime: oneiric](https://img.shields.io/badge/runtime-oneiric-6e5494)](https://github.com/lesleslie/oneiric)
-[![Framework: FastMCP](https://img.shields.io/badge/framework-FastMCP-0ea5e9)](https://github.com/jlowin/fastmcp)
+[![Framework: FastMCP](https://img.shields.io/badge/framework-FastMCP-0ea5e9)](https://github.com/PrefectHQ/fastmcp)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Python: 3.13+](https://img.shields.io/badge/python-3.13%2B-green)](https://www.python.org/downloads/)
 
 Unified MCP server for raster image inspection, conversion, and manipulation.
 
-**Version:** 0.1.2
+**Version:** 0.2.0
 **Status:** Internal Bodai integration component
 
 ## Quick Links
@@ -104,7 +104,7 @@ Add the server to an MCP client configuration:
       "args": ["run", "graphics-mcp", "start"],
       "cwd": "/Users/les/Projects/graphics-mcp",
       "env": {
-        "GRAPHICS_ALLOWED_DIRECTORIES": "/tmp,/Users/les/Pictures,/Users/les/Downloads"
+        "GRAPHICS_ALLOWED_DIRECTORIES": "[\"/tmp\", \"/Users/les/Pictures\", \"/Users/les/Downloads\"]"
       }
     }
   }
@@ -120,11 +120,11 @@ curl http://127.0.0.1:3040/healthz
 
 ## Tool Reference
 
-| Tool | Purpose | Required Inputs |
-|------|---------|-----------------|
+| Tool | Purpose | Key Inputs |
+|------|---------|------------|
 | `get_image_info` | Inspect image metadata | `image_path` |
 | `convert_image` | Convert an image to another format | `image_path`, `output_format` |
-| `resize_image` | Resize an image by width, height, and mode | `image_path`, `width` or `height` |
+| `resize_image` | Resize an image by width, height, and mode | `image_path` (required); `width` XOR `height` |
 | `crop_image` | Crop an image to pixel boundaries | `image_path`, `left`, `top`, `right`, `bottom` |
 | `apply_filter` | Apply a raster filter effect | `image_path`, `filter_type` |
 | `rotate_image` | Rotate an image by degrees | `image_path`, `degrees` |
@@ -159,6 +159,7 @@ Committed defaults live in `settings/graphics.yaml`. Runtime overrides should co
 | Allowed directories | `GRAPHICS_ALLOWED_DIRECTORIES` | `/tmp`, `~/Pictures`, `~/Downloads` |
 | Max file size | `GRAPHICS_MAX_FILE_SIZE_MB` | `100` |
 | Allowed formats | `GRAPHICS_ALLOWED_FORMATS` | `JPEG`, `PNG`, `GIF`, `BMP`, `WEBP`, `TIFF` |
+| Enable HTTP transport | `GRAPHICS_ENABLE_HTTP_TRANSPORT` | `false` |
 | HTTP host | `GRAPHICS_HTTP_HOST` | `127.0.0.1` |
 | HTTP port | `GRAPHICS_HTTP_PORT` | `3040` |
 | Log level | `GRAPHICS_LOG_LEVEL` | `INFO` |

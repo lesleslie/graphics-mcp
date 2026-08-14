@@ -20,15 +20,17 @@ For a shorter, tool-neutral bootstrap document, start with `AGENTS.md`.
 ## Most Common Commands
 
 ```bash
-# Run server (stdio mode)
-graphics-mcp serve
+# Start HTTP MCP server (factory default)
+graphics-mcp start
 
-# Run server (HTTP mode)
-graphics-mcp serve --http --port 3040
-
-# With custom allowed directories
-graphics-mcp serve --allowed-dir /path/to/images
+# Run local health probe
+graphics-mcp health
 ```
+
+The server is bound via environment variables: `GRAPHICS_HTTP_HOST` and
+`GRAPHICS_HTTP_PORT` (defaults `127.0.0.1` and `3040`). Allowed directories are
+configured via `GRAPHICS_ALLOWED_DIRECTORIES` (JSON array form, e.g.
+`'["/tmp", "/Users/les/Pictures", "/Users/les/Downloads"]'`).
 
 ## Critical Rules
 
@@ -62,7 +64,7 @@ Set via environment variables with `GRAPHICS_` prefix:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `GRAPHICS_ALLOWED_DIRECTORIES` | Comma-separated list of allowed paths | - |
+| `GRAPHICS_ALLOWED_DIRECTORIES` | JSON-array list of allowed paths (e.g. `'["/tmp", "/data"]'`) | - |
 | `GRAPHICS_MAX_FILE_SIZE_MB` | Maximum file size | 100 |
 
 ## Tools Provided
