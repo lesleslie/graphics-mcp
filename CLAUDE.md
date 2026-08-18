@@ -80,6 +80,25 @@ Set via environment variables with `GRAPHICS_` prefix:
 | `flip_image` | Flip horizontally/vertically |
 | `create_thumbnail` | Generate thumbnails |
 
+## Tool Profile System
+
+graphics-mcp follows the Bodai ecosystem-wide convention of gating tool
+registration via a `*_TOOL_PROFILE` environment variable (mcp-common
+0.18.0+). The dispatch surface is in `graphics_mcp/tools/profiles.py`;
+the server wires it from `graphics_mcp/server.py::create_app` via
+`await apply_graphics_tool_profile(app)`.
+
+| Profile   | Env var                       | Registered groups                | Tool count |
+|-----------|-------------------------------|----------------------------------|------------|
+| FULL      | `GRAPHICS_TOOL_PROFILE=full` (default) | `universal_tools`, `raster_tools` | 11 + `discover_tools` = 12 |
+| MINIMAL   | `GRAPHICS_TOOL_PROFILE=minimal`        | (none)                            | 0 + `discover_tools` = 1 |
+
+`STANDARD` is intentionally omitted (Tier-B 2-tier mapping per the W3
+brief). Unset / empty / unknown env var → FULL.
+
+The rationale and design decisions live at
+[`docs/architecture/tool-profile-rationale.md`](./docs/architecture/tool-profile-rationale.md).
+
 ## Additional Resources
 
 - **[README.md](./README.md)**: Complete project documentation

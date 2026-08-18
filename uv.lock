@@ -1319,7 +1319,7 @@ grpc = [
 
 [[package]]
 name = "graphics-mcp"
-version = "0.2.1"
+version = "0.2.2"
 source = { editable = "." }
 dependencies = [
     { name = "fastmcp" },
@@ -2161,7 +2161,7 @@ wheels = [
 
 [[package]]
 name = "mcp-common"
-version = "0.17.9"
+version = "0.18.0"
 source = { editable = "../mcp-common" }
 dependencies = [
     { name = "cryptography" },
