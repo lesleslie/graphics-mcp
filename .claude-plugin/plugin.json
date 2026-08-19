@@ -1,0 +1,16 @@
+{
+  "author": {
+    "name": "Bodai"
+  },
+  "description": "Bodai plugin for the graphics-mcp image processing server.",
+  "keywords": [
+    "bodai",
+    "mcp",
+    "graphics",
+    "image-processing"
+  ],
+  "mcpServers": "./.mcp.json",
+  "name": "graphics",
+  "schema_version": "1.0.0",
+  "version": "0.1.0"
+}

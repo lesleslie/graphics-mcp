@@ -92,3 +92,6 @@ exclude_lines = [
 [tool.bandit]
 exclude_dirs = [".venv", "tests"]
 skips = ["B101"]
+
+[tool.mdformat]
+exclude = ["commands/*.md"]

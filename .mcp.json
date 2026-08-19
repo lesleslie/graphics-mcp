@@ -1,0 +1,6 @@
+{
+  "graphics": {
+    "type": "http",
+    "url": "http://localhost:3040/mcp"
+  }
+}
