@@ -97,6 +97,13 @@ skips = ["B101"]
 [tool.mdformat]
 exclude = ["commands/*.md"]
 
+[tool.creosote]
+# Exclude self-invocation tool (crackerjack) and other dev-tool deps from
+# import scanning. Crackerjack is a development tool that's invoked via
+# `uv run crackerjack`; the package code doesn't import it.
+# See https://github.com/fredrikaverpil/creosote for config schema.
+exclude-deps = ["crackerjack"]
+
 [tool.crackerjack]
 # Baseline configuration (auto-bootstrapped 2026-08-20).
 # Hook stages run on `crackerjack run`; see crackerjack --help for the
