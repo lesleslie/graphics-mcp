@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-08-20
+
+### Added
+
+- graphics-mcp: Adopt apply_tool_profile with GRAPHICS_TOOL_PROFILE
+- graphics-mcp: Bodai plugin conversion (manifest, mcp.json, slash commands)
+
+### Fixed
+
+- graphics-mcp: Ruff cleanup (F401, I001, SIM102)
+
+### Internal
+
+- gitignore: Untrack .pyscn/ (bodai 2026-08-20)
+- graphics-mcp: Add [tool.creosote] to skip self-tool scan
+- graphics-mcp: Bootstrap [tool.crackerjack] section + uv sync upgrade
+- graphics-mcp: Gitignore .lycheecache (file, not just dir)
+- graphics-mcp: Gitignore .lycheecache + .hypothesis
+- graphics-mcp: Refresh oneiric + mcp-common deps
+- graphics-mcp: Untrack .lycheecache + .hypothesis runtime artifacts
+
 ## [0.2.1] - 2026-08-14
 
 ### Documentation
