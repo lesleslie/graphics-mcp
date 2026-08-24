@@ -56,7 +56,7 @@ Repository = "https://github.com/lesleslie/graphics-mcp.git"
 packages = ["graphics_mcp"]
 
 [tool.ruff]
-target-version = "py313"
+target-version = "py314"
 line-length = 88
 
 [tool.ruff.lint]
