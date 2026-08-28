@@ -27,10 +27,10 @@ from `mcp_common.tools.dispatch`) with a **2-tier mapping** (Tier-B
 per the W3 brief). The mapping lives in
 `graphics_mcp/tools/profiles.py`:
 
-| Profile   | Registered groups         | Total tools |
+| Profile | Registered groups | Total tools |
 |-----------|---------------------------|-------------|
-| MINIMAL   | (none)                    | 0 + `discover_tools` = 1 |
-| FULL      | `universal_tools`, `raster_tools` | 11 + `discover_tools` = 12 |
+| MINIMAL | (none) | 0 + `discover_tools` = 1 |
+| FULL | `universal_tools`, `raster_tools` | 11 + `discover_tools` = 12 |
 
 `STANDARD` is intentionally **omitted** — graphics-mcp has only 2 register
 groups and 11 tools; a 3-tier split adds no operational value. Operators
@@ -84,9 +84,9 @@ opt-out via `inspect.getsource` so the relationship cannot drift silently.
 
 | Profile | Pre-refactor (inline) | Post-refactor (W0 helper) | Match? |
 |---------|-----------------------|---------------------------|--------|
-| (unset) | 11 tools at startup   | 11 + `discover_tools` = 12 | YES (extra discover_tools is by design) |
-| MINIMAL | (not supported)        | 0 + `discover_tools` = 1 | NEW behavior |
-| FULL    | (always-on)           | 11 + `discover_tools` = 12 | YES |
+| (unset) | 11 tools at startup | 11 + `discover_tools` = 12 | YES (extra discover_tools is by design) |
+| MINIMAL | (not supported) | 0 + `discover_tools` = 1 | NEW behavior |
+| FULL | (always-on) | 11 + `discover_tools` = 12 | YES |
 
 The 11 graphics tool names are identical at FULL profile to the
 pre-refactor inline mode (verified by

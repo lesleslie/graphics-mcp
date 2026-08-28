@@ -46,9 +46,7 @@ PROFILE_REGISTRATIONS: dict[
 }
 
 
-def _build_registration_map() -> dict[
-    str, Callable[[FastMCP], Awaitable[None] | None]
-]:
+def _build_registration_map() -> dict[str, Callable[[FastMCP], Awaitable[None] | None]]:
     """Build the {group_key: register_fn(app)} map.
 
     Local import keeps ``graphics_mcp.tools.profiles`` importable without

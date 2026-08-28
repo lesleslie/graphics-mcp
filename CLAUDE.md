@@ -88,10 +88,10 @@ registration via a `*_TOOL_PROFILE` environment variable (mcp-common
 the server wires it from `graphics_mcp/server.py::create_app` via
 `await apply_graphics_tool_profile(app)`.
 
-| Profile   | Env var                       | Registered groups                | Tool count |
+| Profile | Env var | Registered groups | Tool count |
 |-----------|-------------------------------|----------------------------------|------------|
-| FULL      | `GRAPHICS_TOOL_PROFILE=full` (default) | `universal_tools`, `raster_tools` | 11 + `discover_tools` = 12 |
-| MINIMAL   | `GRAPHICS_TOOL_PROFILE=minimal`        | (none)                            | 0 + `discover_tools` = 1 |
+| FULL | `GRAPHICS_TOOL_PROFILE=full` (default) | `universal_tools`, `raster_tools` | 11 + `discover_tools` = 12 |
+| MINIMAL | `GRAPHICS_TOOL_PROFILE=minimal` | (none) | 0 + `discover_tools` = 1 |
 
 `STANDARD` is intentionally omitted (Tier-B 2-tier mapping per the W3
 brief). Unset / empty / unknown env var → FULL.
