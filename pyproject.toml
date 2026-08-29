@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "graphics-mcp"
-version = "0.4.0"
+version = "0.4.1"
 description = "Unified MCP server for graphics manipulation with multiple backends"
 readme = "README.md"
 license = { text = "BSD-3-Clause" }
@@ -29,9 +29,6 @@ dependencies = [
     "uvicorn>=0.30.0",
     "crackerjack>=0.74.0",
 ]
-
-[tool.uv.sources]
-mcp-common = { path = "../mcp-common", editable = true }
 
 [dependency-groups]
 dev = [
