@@ -203,7 +203,12 @@ class PillowBackend(BaseGraphicsBackend):
         logger.info(  # pragma: no cover
             "Cropping image",  # pragma: no cover
             path=image_path,  # pragma: no cover
-            box=(options.left, options.top, options.right, options.bottom),  # pragma: no cover
+            box=(
+                options.left,
+                options.top,
+                options.right,
+                options.bottom,
+            ),  # pragma: no cover
         )  # pragma: no cover
 
         try:  # pragma: no cover
@@ -220,7 +225,9 @@ class PillowBackend(BaseGraphicsBackend):
             processed = processor.process(img)  # pragma: no cover
 
             if not output_path:  # pragma: no cover
-                output_path = self._generate_output_path(image_path, "cropped")  # pragma: no cover
+                output_path = self._generate_output_path(
+                    image_path, "cropped"
+                )  # pragma: no cover
 
             final_path = self._save_image(processed, output_path)  # pragma: no cover
             new_size = (processed.width, processed.height)  # pragma: no cover
@@ -487,7 +494,9 @@ class PillowBackend(BaseGraphicsBackend):
         API too, which is out of scope for coverage lifting.  # pragma: no cover
         """
         # pragma: no cover  -- broken against modern pilkit Thumbnail API
-        logger.info("Creating thumbnail", path=image_path, size=size)  # pragma: no cover
+        logger.info(
+            "Creating thumbnail", path=image_path, size=size
+        )  # pragma: no cover
 
         try:  # pragma: no cover
             img = self._open_image(image_path)  # pragma: no cover
@@ -498,7 +507,9 @@ class PillowBackend(BaseGraphicsBackend):
             new_size = (processed.width, processed.height)  # pragma: no cover
 
             if not output_path:  # pragma: no cover
-                output_path = self._generate_output_path(image_path, "thumb")  # pragma: no cover
+                output_path = self._generate_output_path(
+                    image_path, "thumb"
+                )  # pragma: no cover
 
             final_path = self._save_image(processed, output_path)  # pragma: no cover
 

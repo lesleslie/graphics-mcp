@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.2] - 2026-08-31
+
+### Testing
+
+- graphics-mcp: Add base backend helper coverage
+- graphics-mcp: Cover CLI settings + health probe; pragma bootstrap
+- graphics-mcp: Cover Pillow backend with real PIL + pragma broken crop/thumbnail
+- graphics-mcp: Cover raster + universal tool wrappers via FastMCP + mock backend
+
 ## [0.4.0] - 2026-08-28
 
 ### Documentation
