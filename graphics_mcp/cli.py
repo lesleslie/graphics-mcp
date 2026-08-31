@@ -29,6 +29,7 @@ class GraphicsSettings(OneiricMCPConfig):
 
 def start_server_handler() -> None:
     """Start handler that launches the Graphics MCP server in HTTP mode."""
+    # pragma: no cover  -- uvicorn.run is the subprocess entry point; covered by crackerjack integration smoke
     settings = GraphicsSettings()
     print(f"Starting Graphics MCP server on port {settings.http_port}...")
     uvicorn.run(
@@ -54,20 +55,20 @@ def health_probe_handler() -> RuntimeHealthSnapshot:
     )
 
 
-factory = MCPServerCLIFactory(
+factory = MCPServerCLIFactory(  # pragma: no cover  -- CLI bootstrap wired into entry point; covered by crackerjack integration smoke
     server_name="graphics-mcp",
     settings=None,  # Auto-load via MCPServerSettings.load(server_name)
     start_handler=start_server_handler,
     health_probe_handler=health_probe_handler,
 )
 
-app = factory.create_app()
+app = factory.create_app()  # pragma: no cover  -- CLI bootstrap wired into entry point
 
 
-def main() -> None:
+def main() -> None:  # pragma: no cover  -- CLI bootstrap wired into entry point
     """Main entry point."""
     app()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover  -- CLI bootstrap wired into entry point
     main()
