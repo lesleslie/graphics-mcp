@@ -1295,7 +1295,7 @@ grpc = [
 
 [[package]]
 name = "graphics-mcp"
-version = "0.4.1"
+version = "0.4.2"
 source = { editable = "." }
 dependencies = [
     { name = "crackerjack" },
@@ -1324,7 +1324,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "crackerjack", specifier = ">=0.74.0" },
-    { name = "fastmcp", specifier = ">=3.4.0,<4" },
+    { name = "fastmcp", specifier = ">=3.4.0,<5" },
     { name = "mcp-common", specifier = ">=0.18.0" },
     { name = "oneiric", specifier = ">=0.16.0" },
     { name = "pilkit", specifier = ">=3.0" },
