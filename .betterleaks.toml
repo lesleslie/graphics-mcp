@@ -1,0 +1,59 @@
+# Betterleaks configuration for graphics-mcp.
+#
+# The default rule set is intentionally broad (matches fake test fixtures too)
+# so we explicitly skip artifacts and self-generated cache files that
+# betterleaks would otherwise scan on subsequent runs.
+#
+# Mirrors .gitleaks.toml conventions used in sister Bodai repos
+# (mahavishnu, session-buddy, mcp-common, dhara, akosha).
+#
+# Why this file exists:
+# Crackerjack's betterleaks hook (crackerjack/adapters/security/betterleaks.py)
+# auto-discovers `.betterleaks.toml` at the git toplevel and recurses into
+# the working tree. Without this allowlist the scan descends into
+# `.crackerjack/uv/cache/archive-v0/...` (uv's vendored package tarballs
+# for fastmcp) and trips on example API keys and `curl -H "Authorization:
+# Bearer ..."` snippets in fastmcp's documentation and test fixtures.
+# Scoping the scan to project sources keeps the report actionable.
+#
+# See https://github.com/gitleaks/gitleaks/blob/master/config/reference.md
+title = "graphics-mcp betterleaks config"
+
+# Paths excluded from the scan. Betterleaks matches each finding's path
+# against the regex list; `(?:^|/)` anchors prevent partial matches like
+# `.venv-test/` matching the `.venv/` entry.
+[allowlist]
+description = "graphics-mcp allowlist (excludes caches, venvs, and vendored third-party code)"
+paths = [
+  # Caches and tool runtime artifacts (also gitignored, defended in depth)
+  '''(?:^|/)\.cache/''',
+  '''(?:^|/)\.crackerjack/''',
+  '''(?:^|/)\.hypothesis/''',
+  '''(?:^|/)\.worktrees/''',
+
+  # Virtual environments and vendored third-party code — must NOT be
+  # scanned for project secrets (none of it is "ours").
+  '''(?:^|/)\.venv/''',
+  '''(?:^|/)venv/''',
+  '''(?:^|/)virtualenv/''',
+  '''(?:^|/)\.tox/''',
+  '''(?:^|/)\.nox/''',
+  '''(?:^|/)site-packages/''',
+  '''(?:^|/)node_modules/''',
+
+  # Build / dist / coverage artifacts
+  '''(?:^|/)__pycache__/''',
+  '''(?:^|/)\.mypy_cache/''',
+  '''(?:^|/)\.ruff_cache/''',
+  '''(?:^|/)\.pytest_cache/''',
+  '''(?:^|/)\.oneiric_cache/''',
+  '''(?:^|/)dist(?:/|$)''',
+  '''(?:^|/)build(?:/|$)''',
+  '''(?:^|/)\.benchmarks/''',
+  '''(?:^|/)htmlcov/''',
+  '''(?:^|/)coverage(?:/|$)''',
+  '''\.egg-info/''',
+
+  # VCS metadata (betterleaks scans past commits too)
+  '''(?:^|/)\.git/''',
+]
