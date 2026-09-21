@@ -9,7 +9,7 @@
 Unified MCP server for raster image inspection, conversion, and manipulation.
 
 **Version:** 0.2.0
-**Status:** Internal Bodai integration component
+**Status:** Standalone FastMCP server
 
 ## Quick Links
 
@@ -118,9 +118,9 @@ curl http://127.0.0.1:3040/health
 curl http://127.0.0.1:3040/healthz
 ```
 
-## Installation via Bodai Marketplace
+## Installation via Claude Code marketplace
 
-This repo ships a Bodai Claude Code plugin manifest (`.claude-plugin/plugin.json`) plus a colocated `.mcp.json` and three slash commands in `commands/`. To install via the Bodai marketplace, first register the marketplace with Claude Code, then install the plugin by name. Once installed, the slash commands `/graphics-convert`, `/graphics-resize`, and `/graphics-thumbnail` become available alongside the `mcp__graphics__*` tools.
+This repo ships a Claude Code plugin manifest (`.claude-plugin/plugin.json`) plus a colocated `.mcp.json` and three slash commands in `commands/`. To install, register the [www-mcp-servers marketplace](https://github.com/lesleslie/www-mcp-servers) with Claude Code, then install the plugin by name. Once installed, the slash commands `/graphics-convert`, `/graphics-resize`, and `/graphics-thumbnail` become available alongside the `mcp__graphics__*` tools.
 
 ## Tool Reference
 
