@@ -23,7 +23,7 @@ Unified MCP server for raster image inspection, conversion, and manipulation.
 
 ## Quality & CI
 
-Crackerjack is the standard quality-control and CI/CD gate for Graphics MCP changes. Local verification should mirror the Crackerjack workflow used across the Bodai ecosystem.
+Crackerjack is the standard quality-control and CI/CD gate for Graphics MCP changes. Local verification should mirror the Crackerjack workflow.
 
 ______________________________________________________________________
 
@@ -80,7 +80,7 @@ uv run graphics-mcp start
 
 ## CLI Commands
 
-The CLI is built with `mcp-common` and provides the standard lifecycle command surface used by Bodai MCP servers.
+The CLI is built with `mcp-common` and provides the standard lifecycle command surface.
 
 ```bash
 uv run graphics-mcp start      # Start the HTTP MCP server
@@ -206,3 +206,7 @@ uv run pytest tests -k resize -v
 - Do not add tools that write outside configured paths.
 - Treat user-provided image paths as untrusted input.
 - Avoid logging full sensitive local paths when examples are shared outside local development.
+
+Built on [Oneiric](https://github.com/lesleslie/oneiric) for runtime configuration
+and [mcp-common](https://github.com/lesleslie/mcp-common) for the FastMCP
+baseline. [Crackerjack](https://github.com/lesleslie/crackerjack) gates every commit.

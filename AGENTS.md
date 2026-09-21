@@ -34,3 +34,7 @@
 
 - Validate file paths and format conversions carefully.
 - Never trust user-supplied paths or unchecked image metadata.
+
+Built on [Oneiric](https://github.com/lesleslie/oneiric) for runtime configuration
+and [mcp-common](https://github.com/lesleslie/mcp-common) for the FastMCP
+baseline. [Crackerjack](https://github.com/lesleslie/crackerjack) gates every commit.
