@@ -4,7 +4,7 @@
 # so we explicitly skip artifacts and self-generated cache files that
 # betterleaks would otherwise scan on subsequent runs.
 #
-# Mirrors .gitleaks.toml conventions used in sister Bodai repos
+# Mirrors .gitleaks.toml conventions used in sister mcp-common repos
 # (mahavishnu, session-buddy, mcp-common, dhara, akosha).
 #
 # Why this file exists:
