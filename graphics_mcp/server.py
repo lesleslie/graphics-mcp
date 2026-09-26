@@ -45,14 +45,10 @@ async def create_app() -> FastMCP:
 
     app = FastMCP(name=APP_NAME, version=APP_VERSION)
 
-    register_http_health_route(app, service_name="graphics", version=APP_VERSION)
-
-    @app.custom_route("/healthz", methods=["GET"])
-    async def healthz_check(request: Any) -> Any:
-        """Kubernetes-style health check endpoint."""
-        from starlette.responses import JSONResponse
-
-        return JSONResponse({"status": "ok"})
+    # Canonical /health route via mcp-common helper. The helper now emits
+    # the StatusValue.HEALTHY.value string in mcp-common >=0.30.0, so we
+    # no longer need a per-server override.
+    register_http_health_route(app, service_name=APP_NAME, version=APP_VERSION)
 
     # Apply tool profile dispatch (GRAPHICS_TOOL_PROFILE env var).
     #
