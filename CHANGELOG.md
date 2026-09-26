@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.4] - 2026-09-26
+
+### Changed
+
+- graphics-mcp: Revert to mcp_common.health.register_http_health_route (canonical StatusValue in 0.30.0)
+
+### Documentation
+
+- Add docs/assets/images/ + .scratch/ convention
+- Consolidate Bodai/Vishnu references to bottom section
+- Drop Bodai integration framing and add substrate note
+
+### Internal
+
+- deps: Bump mcp-common floor to >=0.26.0,<0.27.0 (Phase 2.5)
+- gitignore: Apply Bodai canonical snippet
+- graphics-mcp: Bump mcp-common floor to >=0.30.0
+- graphics-mcp: Refresh uv.lock for mcp-common 0.30.0
+- plugin: Rebadge from Bodai + update install instructions
+
 ## [0.4.3] - 2026-09-06
 
 ### Documentation
@@ -13,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Internal
 
-- deps: Bump fastmcp pin ceiling from <4 to <5 (Phase 3)
+- deps: Bump fastmcp pin ceiling from \<4 to \<5 (Phase 3)
 
 ## [0.4.2] - 2026-08-31
 
